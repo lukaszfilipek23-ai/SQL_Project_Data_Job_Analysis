@@ -1,5 +1,4 @@
-
--- Top ten skills for the top paying jobs
+-- Top 10 umiejętności u najlepiej zarabiających analityków danych
 WITH top_paying_jobs AS (
 SELECT
 	job_id,
@@ -15,9 +14,7 @@ LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
 WHERE
 	job_title = 'Data Analyst'
 	AND salary_year_avg IS NOT NULL
-	AND job_location = 'Anywhere'
-	-- AND job_work_from_home = TRUE -- moje dodanie
-ORDER BY
+	ORDER BY
 	salary_year_avg DESC 
 LIMIT 10
 )
@@ -25,7 +22,7 @@ SELECT
 	top_paying_jobs.job_id,
 	top_paying_jobs.job_title,
 	top_paying_jobs.company_name,
-skills
+  skills
 FROM top_paying_jobs
 INNER JOIN skills_job_dim ON skills_job_dim.job_id=top_paying_jobs.job_id
 INNER JOIN skills_dim ON skills_dim.skill_id=skills_job_dim.skill_id
@@ -33,17 +30,18 @@ INNER JOIN skills_dim ON skills_dim.skill_id=skills_job_dim.skill_id
 /*
 🥇 Umiejętności kluczowe (core skills)
 
-Te kompetencje pojawiają się najczęściej i są traktowane jako warunek wejścia:
+SQL – 5
 
-Python – 7
+Python - 4
 
-SQL – 6
+Tableau - 3
 
-R – 5
 
-👉 Wniosek:
-Python + SQL to jak czytanie i pisanie w świecie danych. Bez tego nie da się funkcjonować.
-R występuje nadal często, ale raczej jako alternatywa lub uzupełnienie (często w firmach bardziej „statystycznych”).
+Najważniejsze wnioski 🚀
+
+SQL 🧱 + Python 🐍 = absolutna podstawa analityka danych
+
+Tableau 📊 = klucz do komunikacji z biznesem
 */
 
 /*

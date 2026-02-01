@@ -1,4 +1,4 @@
-
+-- Indenyfikuje optymalne umiejętności względem popytu oraz wynagrodzenia 
 WITH 
 top_paying AS 
 (
@@ -13,9 +13,7 @@ FROM job_postings_fact
         job_title_short = 'Data Analyst' 
         AND
         salary_year_avg IS NOT NULL
-        AND
-        job_work_from_home = TRUE       
-GROUP BY skills_dim.skill_id
+ GROUP BY skills_dim.skill_id
 ),
  top_demand AS
 (
@@ -30,8 +28,6 @@ FROM job_postings_fact
         job_title_short = 'Data Analyst' 
         AND
         salary_year_avg IS NOT NULL
-        AND 
-        job_work_from_home = TRUE
         GROUP BY skills_dim.skill_id
 )
 SELECT
@@ -45,7 +41,7 @@ ORDER BY
 avg_salary DESC,
 job_count DESC
 
--- bardziej zwarta forma
+-- Zapytanie po optymalizacji
 
 SELECT
 skills_dim.skill_id,
@@ -59,12 +55,22 @@ WHERE
     job_title_short = 'Data Analyst' 
     AND
         salary_year_avg IS NOT NULL
-    AND 
-    job_work_from_home = TRUE
-GROUP BY skills_dim.skill_id
+  GROUP BY skills_dim.skill_id
     HAVING COUNT(skills_job_dim.job_id) > 10
 ORDER BY
     avg_salary DESC,
     job_count DESC
 
+/*
+🚀 Najbardziej „optymalne” skille rynkowo (wysoka płaca + realny popyt) to
+ technologie big data i cloud: Spark, Snowflake, Databricks, Airflow oraz 
+ AWS / Azure / GCP – dają najlepszy zwrot z inwestycji czasowej.
+
+🧱 Skille bazowe (SQL, Python, Excel, Tableau, Power BI) mają ogromny popyt,
+ ale nie różnicują wynagrodzeń – są niezbędnym fundamentem, lecz nie dźwignią 
+ płacową.
+
+🎯 Bardzo wysokie średnie płace przy niskim popycie (Kafka, frameworki ML) 
+wskazują na nisze eksperckie – opłacalne dopiero po zbudowaniu solidnego core data/engineering.
+*/
 
