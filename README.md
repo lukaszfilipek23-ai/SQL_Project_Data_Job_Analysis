@@ -52,7 +52,7 @@ ORDER BY
 	salary_year_avg DESC 
 LIMIT 10
 ```
-## 💰 Top 10 najlepiej płatnych ofert – Data Analyst
+**💰 Top 10 najlepiej płatnych ofert – Data Analyst**
 
 | Job Title    | Salary (USD / year) | Company                     |
 |-------------|---------------------:|-----------------------------|
@@ -137,7 +137,7 @@ ORDER BY count DESC
 LIMIT 5
 
 ```
-**Wnioski z analizy popytu na umiejętności**
+**🔑 Najczęściej wymagane umiejętności – Data Analyst**
 | Skill     | Liczba wystąpień |
 |-----------|------------------|
 | SQL       | 92 628           |
