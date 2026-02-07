@@ -12,10 +12,10 @@ Ten projekt został zrealizowany w języku SQL i ma na celu analizę rynku pracy
 Link do SQL queries: 
 [project_sql folder](/project_sql/) 
 # Kontekst projektu
-Motywacją stojąca za przygotowaniem tego projektu było zrozumienie rynku pracy Anlizy Danych i zaplanowanie optymalnej ścieżki nauki.
+Motywacją stojąca za przygotowaniem tego projektu było zrozumienie rynku pracy Analizy Danych i zaplanowanie optymalnej ścieżki nauki.
 
-Pytania, na które chciałem odpowiedzieć za pomocą zapytań SQL, brzmiały: 
-1. Jakie są najlepiej płatne stanowiska dla Analityka Danych?
+Pytania, na które chciałem odpowiedzieć za pomocą  SQL, brzmiały: 
+1. Jakie są najwyższe wyngrodzenia?
 2. Jakie umiejętności są wymagane na najlepiej płatnych stanowiskach? 
 3. Jakie umiejętności są najbardziej poszukiwane u Analityków Danych? 
 4. Które umiejętności wiążą się z wyższymi zarobkami? 
@@ -26,7 +26,8 @@ W tym projekcie wykorzystałem różnorodne narzędzia do przeprowadzenia analiz
 - **PostgreSQL:** Jako system zarządzania bazą danych, PostgreSQL umożliwił mi przechowywanie, wyszukiwanie i przetwarzanie danych z ofert pracy. 
 - **Visual Studio Code:** Ta platforma administracyjno-programistyczna typu open source pomogła mi zarządzać bazą danych i wykonywać zapytania SQL.
 # Analiza danych
-Każde zapytanie w ramach tego projektu miało na celu zbadanie konkretnych aspektów rynku pracy analityków danych. Oto moje podejście do każdego pytania: 
+Każde zapytanie w ramach tego projektu miało na celu zbadanie konkretnych aspektów rynku pracy analityków danych. 
+
 ### 1. Najwyższe wynagrodzenie wśród Analityków Danych 
 Aby zidentyfikować najlepiej płatne stanowiska, przefiltrowałem stanowiska analityka danych według średniego rocznego wynagrodzenia. 
 To zapytanie wskazuje na możliwości wysokich zarbków dla Analityków Danych.
@@ -51,6 +52,21 @@ ORDER BY
 	salary_year_avg DESC 
 LIMIT 10
 ```
+## 💰 Top 10 najlepiej płatnych ofert – Data Analyst
+
+| Job Title    | Salary (USD / year) | Company                     |
+|-------------|---------------------:|-----------------------------|
+| Data Analyst | 650000               | Mantys                      |
+| Data Analyst | 350000               | Anthropic                   |
+| Data Analyst | 240000               | Anthropic                   |
+| Data Analyst | 225000               | GovCIO                      |
+| Data Analyst | 175000               | Xator Corp                  |
+| Data Analyst | 175000               | Centauri                    |
+| Data Analyst | 175000               | Meta                        |
+| Data Analyst | 170000               | Motion Recruitment          |
+| Data Analyst | 166100               | Noblis                      |
+| Data Analyst | 165000               | Plexus Resource Solutions   |
+
 ### 2. Najczęściej występujące umiejętności wśród 10 najlepiej zarabiających Analityków Danych
 
 Aby uzyskać najczęściej występujące umiejętności u najlepiej zarabiających Analityków Danych połączyłem ogłoszenia o prace z danymi dotyczącyymi umiejętności.
@@ -86,7 +102,7 @@ FROM top_paying_jobs
 INNER JOIN skills_job_dim ON skills_job_dim.job_id=top_paying_jobs.job_id
 INNER JOIN skills_dim ON skills_dim.skill_id=skills_job_dim.skill_id
 ```
-Do przeanalizowania uzyskanych danych oraz przygotowania wykresu wykorzystałem chatGPT. 
+
 
 ![Częstość](assets/2.png)
 
@@ -164,7 +180,7 @@ Najlepiej płatne kompetencje są albo niszowe (SVN, Perl), albo obarczone duży
 złożonością, a nie dlatego, że znają jeden framework lepiej od innych.
 
 ### 5. Najbardziej optymalne umiejętności
-Połączyłem najelpiej opłacane umiejętności z umiejętnościami na które był najwiekszy popyt dzięki czemu uzyskałem obraz nabardziej optymalnych umiejętności.
+Połączyłem najlepiej opłacane umiejętności z umiejętnościami na które był najwiekszy popyt dzięki czemu uzyskałem obraz najbardziej optymalnych umiejętności.
 ```sql
 -- Indenyfikuje optymalne umiejętności względem popytu oraz wynagrodzenia 
 WITH 
@@ -248,12 +264,12 @@ Podczas tego projektu udoskonaliłem kilka kluczowych technik i umiejętności S
 # Wnioski 
 Z analizy wyłoniło się kilka ogólnych wniosków: 
 
-1. ***Najlepiej płatne stanowiska analityka danych:*** Najlepiej płatne stanowiska dla analityków danych, które umożliwiają pracę zdalną, oferują szeroki zakres wynagrodzeń, najwyższe w wysokości 650 000 USD! 
+1. ***Najlepiej płatne stanowiska analityka danych:*** Najlepiej płatne stanowiska dla analityków danyc oferują szeroki zakres wynagrodzeń, najwyższe w wysokości 650 000 USD! 
 
 2. ***Umiejętności na najlepiej płatnych stanowiskach:*** Dobrze płatne stanowiska analityka danych wymagają zaawansowanej znajomości SQL, python ora Tableau co sugeruje, że są to fundamentalnie ważne umiejętności dla osiągnięcia wysokich zarobków.
 
 3. ***Najbardziej poszukiwane umiejętności:*** 
-Tak jak w przypadku pkt. 2 SQL, python oraz umiejętność wizualizacji danych wiedzie prym. Do zestawienia w top dołączył również excel (2 miejsce) co czyni go doskonałym kandydatem do nauki przez początkujące Analityka Danych.
+Tak jak w przypadku pkt. 2 SQL, python oraz umiejętność wizualizacji danych wiedzie prym. Do zestawienia w top 5 dołączył również excel (2 miejsce) co czyni go doskonałym kandydatem do nauki przez początkujące Analityka Danych.
 
 4. ***Umiejętności z wyższymi zarobkami:*** 
 Specjalistyczne umiejętności, takie jak SVN, Solidity, Perl wiążą się z najwyższymi średnimi zarobkami, co wskazuje na przewagę niszowych kompetencji. 
