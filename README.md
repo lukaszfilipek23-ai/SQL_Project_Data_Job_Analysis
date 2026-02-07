@@ -88,7 +88,7 @@ INNER JOIN skills_dim ON skills_dim.skill_id=skills_job_dim.skill_id
 ```
 Do przeanalizowania uzyskanych danych oraz przygotowania wykresu wykorzystałem chatGPT. 
 
-![Częstość](assets\2.png)
+![Częstość](assets/2.png)
 
 🥇 Umiejętności kluczowe (core skills)
 
